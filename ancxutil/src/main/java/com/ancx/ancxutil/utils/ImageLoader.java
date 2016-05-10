@@ -25,7 +25,7 @@ public class ImageLoader {
     /**
      * 线程池
      */
-    private final static ExecutorService executorService = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
+    private final static ExecutorService executorService = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors() + 2);
 
     /**
      * 显示图片，设置默认的defaultResource、errorResource和加载原图
