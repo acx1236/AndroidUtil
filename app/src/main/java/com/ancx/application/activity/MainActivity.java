@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 
 import com.ancx.ancxutil.utils.ImageLoader;
-import com.ancx.ancxutil.utils.MsgUtil;
 import com.ancx.application.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -16,10 +15,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         ImageView mImageView = (ImageView) findViewById(R.id.mImageView);
-        String imgUrl = "http://www.0739i.com.cn/data/attachment/portal/201603/09/120158ksjocrjsoohrmhtg.jpg";
-        ImageLoader.display(imgUrl, mImageView);
+        ImageLoader.display("http://pic33.nipic.com/20130913/13008390_223449507127_2.jpg", mImageView);
 
-        MsgUtil.LogTag(imgUrl);
     }
 
 }

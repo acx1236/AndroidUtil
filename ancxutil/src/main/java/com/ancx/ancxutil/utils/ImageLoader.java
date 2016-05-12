@@ -67,6 +67,9 @@ public class ImageLoader {
      * @param maxHeight       显示图片的最大高度
      */
     public static void display(final String imgUrl, final ImageView imageView, int defaultResource, final int errorResource, final int maxWidth, final int maxHeight) {
+        if (imageView.getTag() != null)
+            // 如果这个ImageView之前加载了一张图片，并且没有加载完，那么取消之前的加载，加载现在的请求
+            App.getQueue().cancelAll(imageView.getTag());
         if (MemoryUtil.getBitmap(imgUrl) != null) {
             // 内存中有图片，显示并结束
             imageView.setImageBitmap(MemoryUtil.getBitmap(imgUrl));
@@ -143,6 +146,9 @@ public class ImageLoader {
                 imageView.setImageResource(errorResource);
             }
         });
+        // 给ImageRequest设置Tag
+        imageRequest.setTag(imgUrl);
+        // 将请求添加到请求队列
         App.getQueue().add(imageRequest);
     }
 }
