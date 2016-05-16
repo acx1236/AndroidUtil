@@ -34,7 +34,7 @@ public class ImageLoader {
      * @param imageView 显示图片的容器
      */
     public static void display(String imgUrl, ImageView imageView) {
-        display(imgUrl, imageView, R.mipmap.ic_launcher, R.mipmap.ic_launcher, 0, 0);
+        display(imgUrl, imageView, R.mipmap.icon_nophoto, R.mipmap.icon_nophoto, 0, 0);
     }
 
     /**
@@ -52,7 +52,7 @@ public class ImageLoader {
             display(imgUrl, imageView, value1, value2, 0, 0);
         } else if (type == 2) {
             // value1为maxWidth；value2为maxHeight
-            display(imgUrl, imageView, R.mipmap.ic_launcher, R.mipmap.ic_launcher, value1, value2);
+            display(imgUrl, imageView, R.mipmap.icon_nophoto, R.mipmap.icon_nophoto, value1, value2);
         }
     }
 

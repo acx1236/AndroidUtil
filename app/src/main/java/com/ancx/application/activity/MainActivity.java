@@ -16,7 +16,6 @@ public class MainActivity extends AppCompatActivity {
 
         ImageView mImageView = (ImageView) findViewById(R.id.mImageView);
         ImageLoader.display("http://pic33.nipic.com/20130913/13008390_223449507127_2.jpg", mImageView);
-
     }
 
 }
