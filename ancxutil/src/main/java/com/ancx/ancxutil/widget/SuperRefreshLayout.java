@@ -20,7 +20,7 @@ import java.util.List;
 /**
  * Created by Ancx
  */
-public class SuperRefreshLayout extends LinearLayout implements SwipeRefreshLayout.OnRefreshListener, LoadingView.OnReloadDataListener {
+public class SuperRefreshLayout extends LinearLayout implements SwipeRefreshLayout.OnRefreshListener, LoadingMoreView.OnReloadDataListener {
 
     // ===============================================接口=======================================================
 
@@ -55,14 +55,14 @@ public class SuperRefreshLayout extends LinearLayout implements SwipeRefreshLayo
         initView();
     }
 
-    private LoadingView mLoadView;
+    private LoadingMoreView mLoadView;
     private SwipeRefreshLayout mSwipeRefreshLayout;
     private RecyclerView mRecyclerView;
     private GridLayoutManager mGridLayoutManager;
     private boolean isLoading, isLoadFinish, isRefreshing;
 
     private void initView() {
-        mLoadView = (LoadingView) findViewById(R.id.mLoadView);
+        mLoadView = (LoadingMoreView) findViewById(R.id.mLoadView);
         mLoadView.setOnReloadDataListener(this);
         mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.mSwipeRefreshLayout);
         mSwipeRefreshLayout.setColorSchemeResources(android.R.color.holo_purple, android.R.color.holo_blue_bright, android.R.color.holo_orange_light, android.R.color.holo_red_light);

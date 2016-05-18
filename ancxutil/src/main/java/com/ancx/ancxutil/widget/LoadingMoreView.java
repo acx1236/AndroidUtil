@@ -13,9 +13,9 @@ import com.ancx.ancxutil.R;
  * 网络等待时的加载动画
  * Created by Ancx
  */
-public class LoadingView extends LinearLayout implements View.OnClickListener {
+public class LoadingMoreView extends LinearLayout implements View.OnClickListener {
 
-    public LoadingView(Context context, AttributeSet attrs) {
+    public LoadingMoreView(Context context, AttributeSet attrs) {
         super(context, attrs);
         inflate(context, R.layout.layout_loading, this);
         initView();
@@ -27,7 +27,7 @@ public class LoadingView extends LinearLayout implements View.OnClickListener {
 
     private void initView() {
         iv_load = (ImageView) findViewById(R.id.iv_load);
-        iv_load.setBackgroundResource(R.drawable.loading);
+        iv_load.setBackgroundResource(R.drawable.loading_more);
         mAnimationDrawable = (AnimationDrawable) iv_load.getBackground();
         mAnimationDrawable.setOneShot(false);
         startAnim();
