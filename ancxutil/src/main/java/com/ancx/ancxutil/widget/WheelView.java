@@ -11,7 +11,6 @@ import android.widget.EditText;
 import android.widget.NumberPicker;
 
 import com.ancx.ancxutil.R;
-import com.ancx.ancxutil.utils.MsgUtil;
 
 import java.lang.reflect.Field;
 
@@ -27,11 +26,11 @@ public class WheelView extends NumberPicker {
     public WheelView(Context context, AttributeSet attrs) {
         super(context, attrs);
         TypedArray typeArray = context.obtainStyledAttributes(attrs, R.styleable.WheelView);
-        editTextColor = typeArray.getColor(R.styleable.WheelView_pickerEditTextColor, 0X000000);
-        splitLineColor = typeArray.getColor(R.styleable.WheelView_splitLineColor, 0X000000);
+        editTextColor = typeArray.getColor(R.styleable.WheelView_pickerEditTextColor, 0xFF000000);
+        splitLineColor = typeArray.getColor(R.styleable.WheelView_splitLineColor, 0xFF000000);
         textSize = typeArray.getDimension(R.styleable.WheelView_textSize, 0);
         typeArray.recycle();
-        setNumberPickerDividerColor();
+        setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
     }
 
     @Override
@@ -68,10 +67,16 @@ public class WheelView extends NumberPicker {
         if (view instanceof EditText) {
             //这里修改字体的属性
             ((EditText) view).setTextColor(Color.parseColor("#000000"));
-            MsgUtil.LogTag("editTextColor = " + Color.parseColor("#000000"));
             if (textSize != 0)
                 ((EditText) view).setTextSize(textSize);
         }
+    }
+
+    @Override
+    public void setDisplayedValues(String[] displayedValues) {
+        super.setDisplayedValues(displayedValues);
+        invalidate();
+        setNumberPickerDividerColor();
     }
 
     private void setNumberPickerDividerColor() {

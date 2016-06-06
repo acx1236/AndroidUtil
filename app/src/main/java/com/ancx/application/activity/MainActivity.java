@@ -22,9 +22,12 @@ public class MainActivity extends AppCompatActivity implements LoadingWaitView.O
 //        ImageView mImageView = (ImageView) findViewById(R.id.mImageView);
         ImageLoader.display("http://img4.duitang.com/uploads/item/201312/05/20131205172421_QKF4K.jpeg", mImageView);
 
-        String[] mDisplayNames = {"tianjin", "heibei", "shanxi"};
+        String[] mDisplayNames = {"北京", "上海", "天津", "深圳", "哈尔滨", "杭州", "宁波"};
         WheelView mWheelView = (WheelView) findViewById(R.id.mWheelView);
         mWheelView.setDisplayedValues(mDisplayNames);
+        mWheelView.setMinValue(0);
+        mWheelView.setMaxValue(6);
+        mWheelView.setValue(3);
 
 //        mLoadingWaitView = (LoadingWaitView) findViewById(R.id.mLoadingWaitView);
 //        mLoadingWaitView.setOnReloadDataListener(this);

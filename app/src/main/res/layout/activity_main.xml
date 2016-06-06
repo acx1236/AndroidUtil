@@ -24,7 +24,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/mImageView"
         android:layout_centerHorizontal="true"
-        app:pickerEditTextColor="#000000" />
+        app:pickerEditTextColor="#FF3456"
+        app:textSize="20sp" />
 
     <!--<ImageView-->
     <!--android:id="@+id/mImageView"-->
