@@ -1,7 +1,6 @@
 package com.ancx.ancxutil.widget;
 
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.util.AttributeSet;
@@ -10,8 +9,6 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.NumberPicker;
 
-import com.ancx.ancxutil.R;
-
 import java.lang.reflect.Field;
 
 /**
@@ -19,17 +16,8 @@ import java.lang.reflect.Field;
  */
 public class WheelView extends NumberPicker {
 
-    private int editTextColor;
-    private int splitLineColor;
-    private float textSize;
-
     public WheelView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        TypedArray typeArray = context.obtainStyledAttributes(attrs, R.styleable.WheelView);
-        editTextColor = typeArray.getColor(R.styleable.WheelView_pickerEditTextColor, 0xFF000000);
-        splitLineColor = typeArray.getColor(R.styleable.WheelView_splitLineColor, 0xFF000000);
-        textSize = typeArray.getDimension(R.styleable.WheelView_textSize, 0);
-        typeArray.recycle();
         setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
     }
 
@@ -66,17 +54,16 @@ public class WheelView extends NumberPicker {
     public void updateView(View view) {
         if (view instanceof EditText) {
             //这里修改字体的属性
-            ((EditText) view).setTextColor(Color.parseColor("#000000"));
-            if (textSize != 0)
-                ((EditText) view).setTextSize(textSize);
+//            ((EditText) view).setTextColor(Color.parseColor("#000000"));
+//            ((EditText) view).setTextSize(textSize);
         }
     }
 
     @Override
     public void setDisplayedValues(String[] displayedValues) {
         super.setDisplayedValues(displayedValues);
-        invalidate();
-        setNumberPickerDividerColor();
+        // 设置分割线颜色
+//        setNumberPickerDividerColor();
     }
 
     private void setNumberPickerDividerColor() {
@@ -85,7 +72,7 @@ public class WheelView extends NumberPicker {
             if (pf.getName().equals("mSelectionDivider")) {
                 pf.setAccessible(true);
                 try {
-                    pf.set(this, new ColorDrawable(splitLineColor));
+                    pf.set(this, new ColorDrawable(Color.parseColor("#000000")));
                 } catch (IllegalArgumentException e) {
                     e.printStackTrace();
                 } catch (IllegalAccessException e) {

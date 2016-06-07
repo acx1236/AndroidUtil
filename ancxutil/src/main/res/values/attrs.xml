@@ -13,12 +13,4 @@
         <attr name="type" />
     </declare-styleable>
 
-    <!--WheelView-->
-
-    <declare-styleable name="WheelView">
-        <attr name="pickerEditTextColor" format="color" />
-        <attr name="splitLineColor" format="color" />
-        <attr name="textSize" format="dimension" />
-    </declare-styleable>
-
 </resources>
