@@ -54,8 +54,8 @@ public class WheelView extends NumberPicker {
     public void updateView(View view) {
         if (view instanceof EditText) {
             //这里修改字体的属性
-//            ((EditText) view).setTextColor(Color.parseColor("#000000"));
-//            ((EditText) view).setTextSize(textSize);
+            ((EditText) view).setTextColor(Color.parseColor("#000000"));
+            ((EditText) view).setTextSize(20);
         }
     }
 
@@ -63,7 +63,7 @@ public class WheelView extends NumberPicker {
     public void setDisplayedValues(String[] displayedValues) {
         super.setDisplayedValues(displayedValues);
         // 设置分割线颜色
-//        setNumberPickerDividerColor();
+        setNumberPickerDividerColor();
     }
 
     private void setNumberPickerDividerColor() {
@@ -72,7 +72,7 @@ public class WheelView extends NumberPicker {
             if (pf.getName().equals("mSelectionDivider")) {
                 pf.setAccessible(true);
                 try {
-                    pf.set(this, new ColorDrawable(Color.parseColor("#000000")));
+                    pf.set(this, new ColorDrawable(Color.parseColor("#123456")));
                 } catch (IllegalArgumentException e) {
                     e.printStackTrace();
                 } catch (IllegalAccessException e) {

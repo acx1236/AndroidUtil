@@ -1,7 +1,9 @@
 package com.ancx.ancxutil.utils;
 
 import com.ancx.ancxutil.App;
+import com.ancx.ancxutil.listener.OnDownFileListener;
 import com.ancx.ancxutil.listener.OnHttpRequestListener;
+import com.ancx.ancxutil.utils.request.FileRequest;
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.NetworkResponse;
@@ -11,6 +13,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.StringRequest;
 
+import java.io.ByteArrayInputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.Map;
 
@@ -66,6 +69,32 @@ public class HttpUtil {
             }
         };
         App.getQueue().add(stringRequest);
+    }
+
+    public static void downFile(String url, String path, final OnDownFileListener onDownFileListener) {
+        FileRequest fileRequest = new FileRequest(url, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                if (onDownFileListener != null)
+                    onDownFileListener.error(error);
+            }
+        }, new Response.Listener<byte[]>() {
+            @Override
+            public void onResponse(byte[] response) {
+                if (onDownFileListener != null)
+                    onDownFileListener.onResponse(new ByteArrayInputStream(response));
+            }
+        }) {
+            /**
+             * 设置超时时间和连接次数
+             * @return
+             */
+            @Override
+            public RetryPolicy getRetryPolicy() {
+                return mDefaultRetryPolicy;
+            }
+        };
+        App.getQueue().add(fileRequest);
     }
 
 }

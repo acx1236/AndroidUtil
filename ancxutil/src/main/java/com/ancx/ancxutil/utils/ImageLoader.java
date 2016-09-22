@@ -12,9 +12,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageRequest;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-
 /**
  * 图片加载器
  * Created by Ancx
@@ -22,10 +19,6 @@ import java.util.concurrent.Executors;
 public class ImageLoader {
 
     private static Handler handler = new Handler();
-    /**
-     * 线程池
-     */
-    private final static ExecutorService executorService = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors() + 2);
 
     /**
      * 显示图片，设置默认的defaultResource、errorResource和加载原图
@@ -79,7 +72,7 @@ public class ImageLoader {
         imageView.setTag(imgUrl);
         imageView.setImageResource(defaultResource);
         // 开启线程在存储卡中查找图片
-        executorService.execute(new Runnable() {
+        ThreadUtil.startThread(new Runnable() {
             @Override
             public void run() {
                 String localPath = MemoryUtil.getLocalPath(imgUrl);
@@ -129,7 +122,7 @@ public class ImageLoader {
                 // 网路上获取的图片缓存到内存中
                 MemoryUtil.putBitmap(imgUrl, bitmap);
                 // 开启分线程存储图片到存储卡中
-                executorService.execute(new Runnable() {
+                ThreadUtil.startThread(new Runnable() {
                     @Override
                     public void run() {
                         // 存储图片到指定目录
