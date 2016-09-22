@@ -84,7 +84,7 @@ public class DownLoadUtil {
                     handler.post(new Runnable() {
                         @Override
                         public void run() {
-                            onProgressListener.onProgressUpdate(progress);
+                            onProgressListener.onProgressUpdate(Util.decimalFormat.format(progress));
                         }
                     });
                 }
