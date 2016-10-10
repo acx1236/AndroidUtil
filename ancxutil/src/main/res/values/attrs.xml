@@ -13,4 +13,9 @@
         <attr name="type" />
     </declare-styleable>
 
+    <!--自定义的状态-->
+    <declare-styleable name="AncxStates">
+        <attr name="state_ancx" format="boolean" />
+    </declare-styleable>
+
 </resources>

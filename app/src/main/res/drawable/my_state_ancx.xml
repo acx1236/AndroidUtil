@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" xmlns:ancx="http://schemas.android.com/apk/res-auto">
+
+    <item android:drawable="@android:color/white" ancx:state_ancx="false" />
+    <item android:drawable="@android:color/black" ancx:state_ancx="true" />
+
+</selector>
