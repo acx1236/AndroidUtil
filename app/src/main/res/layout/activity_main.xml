@@ -1,7 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/rootView"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-</RelativeLayout>
+    <com.ancx.ancxutil.widget.shop.ShopListView
+        android:id="@+id/mShopListView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <TextView
+        android:id="@+id/tv_shops"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="#404040"
+        android:gravity="center_vertical"
+        android:paddingLeft="20dp"
+        android:text="购物车"
+        android:textColor="#FFFFFF"
+        android:textSize="21sp" />
+
+</LinearLayout>
